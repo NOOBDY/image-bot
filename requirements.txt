@@ -1,0 +1,2 @@
+google-images-download
+git+https://github.com/Rapptz/discord.py@rewirte
