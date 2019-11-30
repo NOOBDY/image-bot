@@ -2,8 +2,13 @@ import discord
 import os
 from discord.ext import commands
 import time
+import json
 
-TOKEN = "NjIzNTIxODM0NzEyODI1ODY2.XeHUOg.pz5ZO4h4JXUWA3nmOS3fG4iVdjo"
+with open("config.json", "r") as read_file:
+    config = json.load(read_file)
+
+TOKEN = config["token"]
+
 
 client = commands.Bot(command_prefix=".")
 
@@ -27,7 +32,7 @@ async def unload(ctx, extension):
     await ctx.send(f"Unloaded {extension} module")
 
 
-for filename in os.listdir("./discord/cogs"):
+for filename in os.listdir("./cogs"):
     if filename.endswith(".py"):
         client.load_extension(f"cogs.{filename[:-3]}")
 
