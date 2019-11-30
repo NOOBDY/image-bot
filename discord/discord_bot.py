@@ -3,7 +3,7 @@ import os
 from discord.ext import commands
 import time
 
-TOKEN = "NjIzNTIxODM0NzEyODI1ODY2.XdOeTg.ivq7aheYQCOBIbhn34gxFJYPtv0"
+TOKEN = "NjIzNTIxODM0NzEyODI1ODY2.XeHUOg.pz5ZO4h4JXUWA3nmOS3fG4iVdjo"
 
 client = commands.Bot(command_prefix=".")
 
@@ -27,7 +27,7 @@ async def unload(ctx, extension):
     await ctx.send(f"Unloaded {extension} module")
 
 
-for filename in os.listdir("./cogs"):
+for filename in os.listdir("./discord/cogs"):
     if filename.endswith(".py"):
         client.load_extension(f"cogs.{filename[:-3]}")
 
