@@ -4,10 +4,7 @@ from discord.ext import commands
 import time
 import json
 
-with open("config.json", "r") as read_file:
-    config = json.load(read_file)
-
-TOKEN = os.getenv("TOKEN")
+TOKEN = os.environ["TOKEN"]
 
 client = commands.Bot(command_prefix=".")
 
