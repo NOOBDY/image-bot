@@ -28,4 +28,4 @@ jobs:
     - name: Run bot
       run: python ./discord_bot.py
       env:
-        TOKEN: ${{sercets.TOKEN}}
+        TOKEN: ${{secrets.TOKEN}}
