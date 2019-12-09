@@ -4,7 +4,6 @@ from discord.ext import commands
 import time
 import json
 
-TOKEN = os.environ["TOKEN"]
 
 client = commands.Bot(command_prefix=".")
 
@@ -43,4 +42,4 @@ async def clear(ctx, amount=100):
     print("Messages deleted")
 
 
-client.run(TOKEN)
+client.run(os.environ["TOKEN"])
