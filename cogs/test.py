@@ -23,6 +23,21 @@ class Test(commands.Cog):
             output += " "
         await ctx.send(output)
 
+    @commands.command(pass_context=True)
+    async def bot(self, ctx, *args):
+
+        channel = ctx.message.channel
+        messages = []
+        async for message in channel.history(limit=1):
+            messages.append(message)
+        await channel.delete_messages(messages)
+        await client
+        
+        o = ""
+        for c in args:
+            o += c
+            o += " "
+        await ctx.send(o)
 
 def setup(client):
     client.add_cog(Test(client))
