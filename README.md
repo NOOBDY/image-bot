@@ -74,4 +74,4 @@ loads modules, don't touch this unless you know what you're doing
 
 unloads modules, also not recommended to use
 
-`.unload [modules]`
+`.unload [module]`
