@@ -31,7 +31,7 @@ class Test(commands.Cog):
         async for message in channel.history(limit=1):
             messages.append(message)
         await channel.delete_messages(messages)
-        await client
+        # await client
         
         o = ""
         for c in args:
