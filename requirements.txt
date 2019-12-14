@@ -2,4 +2,3 @@ google-images-download
 discord.py
 beautifulsoup4
 requests
-lxml
