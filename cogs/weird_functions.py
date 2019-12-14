@@ -28,12 +28,14 @@ class Weird(commands.Cog):
     async def porn(self, ctx, *args):
         keyword, titles, urls, thumbs = pornhub(args)
         i = randint(0, len(urls) - 1)
+
         title = titles[i]
         url = urls[i]
         thumb = thumbs[i]
-        embed=discord.Embed(title=f"Search results for: {keyword}")
+
+        embed = discord.Embed(title=title, description=url)
+        embed.set_author(name=f"Search results for: {keyword}")
         embed.set_thumbnail(url=thumb)
-        embed.add_field(name=title, value=url, inline=True)
         await ctx.send(embed=embed)
 
 def setup(client):

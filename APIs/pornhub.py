@@ -24,7 +24,6 @@ def pornhub(keywords, limit=10):
     r_keyword = keyword.replace("+", " ")
     
     if len(urls) > 10:
-        print(">10")
         return r_keyword, titles[:10], urls[:10], thumbs[:10]
     else:
         return r_keyword, titles, urls, thumbs

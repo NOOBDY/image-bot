@@ -1,5 +1,15 @@
 # Discord Bot
 
+command prefix: `.`
+
+usage: `.[command]`
+
+example: `.help`
+
+
+
+This is a discord bot I created for fun, more features will probably be coming, or not, IDK.
+
 
 
 ## Test
