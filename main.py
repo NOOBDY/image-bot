@@ -1,8 +1,6 @@
 import discord
 import os
 from discord.ext import commands
-import time
-import json
 
 
 client = commands.Bot(command_prefix=".")
