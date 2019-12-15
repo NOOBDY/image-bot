@@ -44,7 +44,7 @@ returns one of the first ten image results on google images
 
 ### porn
 
-returns one of the first ten video results on www.pornhub.com(this will return irrelevant results if nothing is found)
+returns one of the first ten video results on www.pornhub.com (this will return irrelevant results if nothing is found)
 
 `.porn [this can also contain multiple keywords]`
 
@@ -74,4 +74,4 @@ loads modules, don't touch this unless you know what you're doing
 
 unloads modules, also not recommended to use
 
-`.unload [modules]`
+`.unload [module]`
