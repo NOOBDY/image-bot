@@ -7,6 +7,12 @@ client = commands.Bot(command_prefix=".")
 
 
 @client.event
+async def on_ready():
+    print("Bot is ready")
+    if os.environ["TOKEN"] == "exit":
+        exit(0)
+
+@client.event
 async def on_message(message):
     author = message.author
     print("User [{}] has sent a message".format(author))
@@ -38,6 +44,5 @@ async def clear(ctx, amount=100):
         messages.append(message)
     await channel.delete_messages(messages)
     print("Messages deleted")
-
 
 client.run(os.environ["TOKEN"])
