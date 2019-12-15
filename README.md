@@ -44,7 +44,7 @@ returns one of the first ten image results on google images
 
 ### porn
 
-returns one of the first ten video results on www.pornhub.com (this will return irrelevant results if nothing is found)
+returns one of the first ten video results from Canada's largest website (this will return irrelevant results if nothing is found)
 
 `.porn [this can also contain multiple keywords]`
 
