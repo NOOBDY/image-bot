@@ -5,7 +5,7 @@ from google_images_download import google_images_download
 def image(keywords, limit=10):
 
     response = google_images_download.googleimagesdownload()
-    keyword = ",".join(keywords)
+    keyword = " ".join(keywords)
     args = {
         "keywords": keyword,
         "limit": limit,
