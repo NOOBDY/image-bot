@@ -21,12 +21,14 @@ class Weird(commands.Cog):
             return
 
         elif isinstance(error, commands.NSFWChannelRequired):
+            # NFSW channel error
+
             embed = discord.Embed(
                 title="Dis ain't no NSFW channel, dumbass.",
                 description="Try this command again in a NSFW channel",
                 color=0xff0000)
             return await ctx.send(embed=embed)
-        
+
         print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
         traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 
@@ -50,19 +52,31 @@ class Weird(commands.Cog):
     @commands.is_nsfw()
     async def porn(self, ctx, *args):
         keyword, titles, urls, thumbs = pornhub(args)
-        i = randint(0, len(urls) - 1)
+        if urls is not None:
+            # sends one of the first ten results found
 
-        title = titles[i]
-        url = urls[i]
-        thumb = thumbs[i]
+            # initialize index, data
+            i = randint(0, len(urls) - 1)
+            title = titles[i]
+            url = urls[i]
+            thumb = thumbs[i]
 
-        embed = discord.Embed(
-            title=title,
-            description=url,
-            color=0xff8000)
-        embed.set_author(name=f"Search results for: {keyword}")
-        embed.set_thumbnail(url=thumb)
-        await ctx.send(embed=embed)
+            # formatting and sending embed
+            embed = discord.Embed(
+                title=title,
+                description=url,
+                color=0xff8000)
+            embed.set_author(name=f"Search results for: {keyword}")
+            embed.set_thumbnail(url=thumb)
+            await ctx.send(embed=embed)
+        else:
+            # returns no results message if not relevant results are found
+
+            embed = discord.Embed(
+                title="No results found",
+                description="Try a more common keyword!",
+                color=0xff8000)
+            await ctx.send(embed=embed)
 
 
 def setup(client):
