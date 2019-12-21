@@ -39,7 +39,7 @@ def pornhub(keywords, limit=10):
 if __name__ == "__main__":
     from random import randint
     search = input("Search something: ")
-    keyword, titles, urls, thumbs = pornhub(search)
+    keyword, titles, urls, thumbs = pornhub([search])
     if urls is not None:
         print(f"{len(titles)} result(s) found")
         for i in range(len(titles)):
