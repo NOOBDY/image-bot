@@ -17,18 +17,6 @@ async def on_message(message):
     await client.process_commands(message)
 
 
-@client.command()
-async def load(ctx, extension):
-    client.load_extension(f"cogs.{extension}")
-    await ctx.send(f"Loaded {extension} module")
-
-
-@client.command()
-async def unload(ctx, extension):
-    client.unload_extension(f"cogs.{extension}")
-    await ctx.send(f"Unloaded {extension} module")
-
-
 for filename in os.listdir("./cogs"):
     if filename.endswith(".py"):
         client.load_extension(f"cogs.{filename[:-3]}")

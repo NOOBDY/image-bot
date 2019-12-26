@@ -63,15 +63,3 @@ clears a given amount of messages or 100 by default
 returns the help message, containing all commands
 
 `.help`
-
-### load
-
-loads modules, don't touch this unless you know what you're doing
-
-`.load [module]`
-
-### unload
-
-unloads modules, also not recommended to use
-
-`.unload [module]`
