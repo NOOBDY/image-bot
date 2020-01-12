@@ -1,15 +1,16 @@
 import requests
 from bs4 import BeautifulSoup
 
+
 def pornhub(keywords, limit=10):
-    
+
     # keyword is for the url, r_keyword is for displaying on the message
     keyword = "+".join(keywords)
     r_keyword = keyword.replace("+", " ")
     BASE_URL = "https://pornhub.com"
     SEARCH_URL = f"{BASE_URL}/video/search?search={keyword}"
-    
-    #initializing arrays
+
+    # initializing arrays
     titles = []
     urls = []
     thumbs = []
@@ -26,7 +27,7 @@ def pornhub(keywords, limit=10):
             titles.append(a['title'])
             urls.append(f"{BASE_URL}{a['href']}")
             thumbs.append(a.img['data-src'])
-    
+
     # return most relevant results, if any
     if len(urls) > 10:
         return r_keyword, titles[:10], urls[:10], thumbs[:10]
@@ -34,6 +35,7 @@ def pornhub(keywords, limit=10):
         return r_keyword, titles, urls, thumbs
     else:
         return None, None, None, None
+
 
 # unrelated code, testing purposes
 if __name__ == "__main__":

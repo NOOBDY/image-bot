@@ -7,6 +7,7 @@ from APIs.image import image
 from APIs.pornhub import pornhub
 import traceback
 
+
 class Weird(commands.Cog):
     def __init__(self, client):
         self.client = client
@@ -29,9 +30,10 @@ class Weird(commands.Cog):
                 color=0xff0000)
             return await ctx.send(embed=embed)
 
-        print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
-        traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
-
+        print('Ignoring exception in command {}:'.format(
+            ctx.command), file=sys.stderr)
+        traceback.print_exception(
+            type(error), error, error.__traceback__, file=sys.stderr)
 
     @commands.command()
     async def image(self, ctx, *args):
@@ -46,7 +48,6 @@ class Weird(commands.Cog):
                 color=0x00ffae)
             embed.set_image(url=url)
             await ctx.send(embed=embed)
-
 
     @commands.command(pass_context=True)
     @commands.is_nsfw()
