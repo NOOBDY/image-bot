@@ -2,23 +2,20 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def autocomplete(keyword):
-    pass
+def rule34(keywords, index):
 
-
-def rule34(keywords):
-
+    keywords = [f"{keyword}*" for keyword in keywords]
     keyword = "+".join(keywords)
+
     BASEURL = "https://rule34.xxx/"
-    AUTOCOMPLETEURL = f"{BASEURL}index.php?page=tags&s=list&tags={keyword}*&sort=desc&order_by=index_count"
+    SEARCHURL = f"{BASEURL}index.php?page=post&s=list&tags={keyword}"
 
-    a_response = requests.get(AUTOCOMPLETEURL)
-    a_html = a_response.content
-    a_soup = BeautifulSoup(a_html, "html.parser")
-    a_item = a_soup.find("span", class_="tag-type-general").findChild().text
-    print(a_item)
-    SEARCHURL = f"{BASEURL}{a_item}"
-    print(SEARCHURL)
+    soup = BeautifulSoup(requests.get(SEARCHURL).content, "html.parser")
+    item = soup.find_all("span", class_="thumb")[index + 4]
 
+    IMAGEURL = BASEURL + item.find("a")["href"]
 
-rule34(["loli"])
+    i_soup = BeautifulSoup(requests.get(IMAGEURL).content, "html.parser")
+    image = i_soup.find_all("img", id="image")[0]
+
+    return IMAGEURL, image["alt"], image["src"]
