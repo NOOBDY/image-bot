@@ -10,6 +10,7 @@ client = commands.Bot(command_prefix=".")
 async def on_ready():
     print("Bot is ready")
 
+
 @client.event
 async def on_message(message):
     author = message.author

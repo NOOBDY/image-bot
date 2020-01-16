@@ -38,9 +38,7 @@ class Weird(commands.Cog):
     @commands.command()
     async def image(self, ctx, *args):
         keyword, urls = image(args)
-        if urls is None:
-            ctx.send("No image found or some error occured. Please try again.")
-        else:
+        if urls is not None:
             url = urls[randint(0, len(urls) - 1)]
             embed = discord.Embed(
                 title=f"Search results for: {keyword}",
@@ -48,6 +46,8 @@ class Weird(commands.Cog):
                 color=0x00ffae)
             embed.set_image(url=url)
             await ctx.send(embed=embed)
+        else:
+            ctx.send("No image found or some error occured. Please try again.")
 
     @commands.command(pass_context=True)
     @commands.is_nsfw()
@@ -55,20 +55,15 @@ class Weird(commands.Cog):
         keyword, titles, urls, thumbs = pornhub(args)
         if urls is not None:
             # sends one of the first ten results found
-
-            # initialize index, data
             i = randint(0, len(urls) - 1)
-            title = titles[i]
-            url = urls[i]
-            thumb = thumbs[i]
 
             # formatting and sending embed
             embed = discord.Embed(
-                title=title,
-                description=url,
+                title=titles[i],
+                description=urls[i],
                 color=0xff8000)
             embed.set_author(name=f"Search results for: {keyword}")
-            embed.set_thumbnail(url=thumb)
+            embed.set_thumbnail(url=thumbs[i])
             await ctx.send(embed=embed)
         else:
             # returns no results message if not relevant results are found
