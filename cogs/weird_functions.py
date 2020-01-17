@@ -5,6 +5,7 @@ import sys
 from random import randint
 from APIs.image import image
 from APIs.pornhub import pornhub
+from APIs.rule34 import rule34
 import traceback
 
 
@@ -73,6 +74,10 @@ class Weird(commands.Cog):
                 description="Try a more common keyword!",
                 color=0xff8000)
             await ctx.send(embed=embed)
+
+    @commands.command()
+    async def rule34(self, ctx, *args):
+        url, title, img = rule34(args, randint(1, 10))
 
 
 def setup(client):
