@@ -53,22 +53,18 @@ class Weird(commands.Cog):
     @commands.command(pass_context=True)
     @commands.is_nsfw()
     async def porn(self, ctx, *args):
-        keyword, titles, urls, thumbs = pornhub(args)
-        if urls is not None:
-            # sends one of the first ten results found
-            i = randint(0, len(urls) - 1)
-
+        keyword, title, url, thumb = pornhub(args, randint(1, 10))
+        if url is not None:
             # formatting and sending embed
             embed = discord.Embed(
-                title=titles[i],
-                description=urls[i],
+                title=title,
+                description=url,
                 color=0xff8000)
             embed.set_author(name=f"Search results for: {keyword}")
-            embed.set_thumbnail(url=thumbs[i])
+            embed.set_image(url=thumb)
             await ctx.send(embed=embed)
         else:
             # returns no results message if not relevant results are found
-
             embed = discord.Embed(
                 title="No results found",
                 description="Try a more common keyword!",
