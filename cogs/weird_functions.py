@@ -75,10 +75,23 @@ class Weird(commands.Cog):
                 color=0xff8000)
             await ctx.send(embed=embed)
 
-    @commands.command()
+    @commands.command(pass_context=True)
+    @commands.is_nsfw()
     async def rule34(self, ctx, *args):
-        url, title, img = rule34(args, randint(1, 10))
-
+        keyword, url, img = rule34(args, randint(1, 10))
+        if url is not None:
+            embed = discord.Embed(
+                title=f"Search results for: {keyword}",
+                description=url
+            )
+            embed.set_image(url=img)
+            await ctx.send(embed=embed)
+        else:
+            embed = discord.Embed(
+                title="No results found",
+                description="Try a more common keyword"
+            )
+            await ctx.send(embed)
 
 def setup(client):
     client.add_cog(Weird(client))

@@ -1,15 +1,14 @@
 import requests
 from bs4 import BeautifulSoup
-from random import randint
 
 
 def rule34(keywords, index):
 
-    keywords = [f"{keyword}*" for keyword in keywords]
-    keyword = "+".join(keywords)
+    keyword = "_".join(keywords)
+    r_keyword=" ".join(keywords)
 
     BASEURL = "https://rule34.xxx/"
-    SEARCHURL = f"{BASEURL}index.php?page=post&s=list&tags={keyword}"
+    SEARCHURL = f"{BASEURL}index.php?page=post&s=list&tags={keyword}*"
 
     soup = BeautifulSoup(requests.get(SEARCHURL).content, "html.parser")
     items = soup.find_all("span", class_="thumb")
@@ -27,10 +26,4 @@ def rule34(keywords, index):
     i_soup = BeautifulSoup(requests.get(IMAGEURL).content, "html.parser")
     image = i_soup.find_all("img", id="image")[0]
 
-    return IMAGEURL, image["alt"], image["src"]
-
-
-for i in range(1, 11):
-    index = i
-    print(index)
-    print(rule34(["as"], index))
+    return r_keyword, IMAGEURL, image["src"]
