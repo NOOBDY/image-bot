@@ -36,7 +36,7 @@ class Weird(commands.Cog):
         traceback.print_exception(
             type(error), error, error.__traceback__, file=sys.stderr)
 
-    @commands.command()
+    @commands.command(aliases=["img"])
     async def image(self, ctx, *args):
         keyword, urls = image(args)
         if urls is not None:
@@ -71,7 +71,7 @@ class Weird(commands.Cog):
                 color=0xff8000)
             await ctx.send(embed=embed)
 
-    @commands.command(pass_context=True)
+    @commands.command(pass_context=True, aliases=["r34"])
     @commands.is_nsfw()
     async def rule34(self, ctx, *args):
         keyword, url, img = rule34(args, randint(1, 10))
@@ -88,6 +88,7 @@ class Weird(commands.Cog):
                 description="Try a more common keyword"
             )
             await ctx.send(embed)
+
 
 def setup(client):
     client.add_cog(Weird(client))
