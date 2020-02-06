@@ -44,7 +44,7 @@ returns one of the first ten image results on google images
 
 ### porn
 
-returns one of the first ten video results from Canada's largest website (this will return irrelevant results if nothing is found)
+returns one of the first ten video results from Canada's largest website
 
 `.porn [this can also contain multiple keywords]`
 
@@ -63,15 +63,3 @@ clears a given amount of messages or 100 by default
 returns the help message, containing all commands
 
 `.help`
-
-### load
-
-loads modules, don't touch this unless you know what you're doing
-
-`.load [module]`
-
-### unload
-
-unloads modules, also not recommended to use
-
-`.unload [module]`
