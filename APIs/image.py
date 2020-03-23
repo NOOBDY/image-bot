@@ -1,25 +1,24 @@
-from google_images_download import google_images_download
+import requests
+from bs4 import BeautifulSoup
+import os
 
 
-def image(keywords, limit=10):
+def image(keywords, index):
+    keyword = "+".join(keywords)
 
-    response = google_images_download.googleimagesdownload()
-    keyword = " ".join(keywords)
-    args = {
-        "keywords": keyword,
-        "limit": limit,
-        "print_urls": False,
-        "no_download": True,
-        "format": "jpg"
-    }
-    i = 0
-    while i < 2:
-        urls = []
-        paths, errors = response.download(args)
-        for path in paths[keyword]:
-            urls.append(path)
-        if len(urls) != 0:
-            return keyword.replace(",", " "), urls
-        else:
-            i += 1
-    return None
+    BASEURL = 'https://www.googleapis.com/customsearch/v1?'
+    APIKEY = os.environ["APIKEY"]
+    CX = "013191322677682374929:qdynn3gz9ku"
+    SEARCHURL = f"{BASEURL}key={APIKEY}&cx={CX}&q={keyword}&searchType=image"
+
+    response = requests.get(SEARCHURL).json()
+    items = response["items"]
+
+    if len(items) == 0:
+        return None
+    elif len(items) < 10:
+        index = round(((len(items) - 1) / 9) * (index - 1))
+    else:
+        index -= 1
+
+    return items[index]["link"]

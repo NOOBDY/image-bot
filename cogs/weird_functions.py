@@ -38,9 +38,9 @@ class Weird(commands.Cog):
 
     @commands.command(aliases=["img"])
     async def image(self, ctx, *args):
-        keyword, urls = image(args)
-        if urls is not None:
-            url = urls[randint(0, len(urls) - 1)]
+        url = image(args, randint(1, 10))
+        if url is not None:
+            keyword = " ".join(args)
             embed = discord.Embed(
                 title=f"Search results for: {keyword}",
                 description=url,
