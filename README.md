@@ -1,65 +1,73 @@
 # Discord Bot
 
-command prefix: `.`
+Command Prefix: `.`
 
-usage: `.[command]`
+Usage: `.[command]`
 
-example: `.help`
+Example: `.help`
 
-
+---
 
 This is a discord bot I created for fun, more features will probably be coming, or not, IDK.
-
-
 
 ## Test
 
 ### bot
 
-deletes the message sent by the user then echoes it, making the bot say anything you want
+Description: Deletes the message sent by the user then echoes it, making the bot say anything you want
 
-`.bot [your message here]`
+Usage: `.bot [your message here]`
 
 ### echo
 
-echoes the message sent by the user
+Description: Echoes the message sent by the user
 
-`.echo [message]`
+Usage: `.echo [message]`
 
 ### ping
 
-returns "pong", nothing exciting
+Description: Returns "pong", nothing exciting
 
-`.ping`
-
-
+Usage: `.ping`
 
 ## Weird
 
 ### image
 
-returns one of the first ten image results on google images
+Description: Returns one of the first ten image results on google images
 
-`.image [keywords can contain more than one word]`
+Usage: `.image [keywords can contain more than one word]`
+
+> Note: Will return different results depending on whether the channel is a NSFW channel or not
 
 ### porn
 
-returns one of the first ten video results from Canada's largest website
+Description: Returns one of the first ten video results from Canada's largest website
 
-`.porn [this can also contain multiple keywords]`
+Usage: `.porn [this can also contain multiple keywords]`
 
+> Note: This command can only be used in a NSFW channel
 
+### rule34
+
+Description: Returns one of the first ten image results from <https://rule34.xxx/>
+
+Usage: `.rule34 [still another command that can take multiple keywords]`
+
+> Note: This command can only be used in a NSFW channel
 
 ## No Category
 
 ### Clear
 
-clears a given amount of messages or 100 by default
+Description: Clears a given amount of messages or 100 by default
 
-`.clear [amount(optional)]`
+Usage: `.clear [amount(optional)]`
+
+> Note: Messages older than 14 days cannot be deleted
 
 ### help
 
-returns the help message, containing all commands
+Description: returns the help message, containing all commands
 
-`.help`
+Usage: `.help`
