@@ -38,7 +38,11 @@ class Weird(commands.Cog):
 
     @commands.command(aliases=["img"])
     async def image(self, ctx, *args):
-        url = image(args, randint(1, 10))
+        if ctx.channel.is_nsfw():
+            url = image(args, "off", randint(1, 10))
+        else:
+            url = image(args, "active", randint(1, 10))
+
         if url is not None:
             keyword = " ".join(args)
             embed = discord.Embed(

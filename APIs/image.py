@@ -3,13 +3,13 @@ from bs4 import BeautifulSoup
 import os
 
 
-def image(keywords, index):
+def image(keywords, is_nsfw, index):
     keyword = "+".join(keywords)
 
     BASEURL = 'https://www.googleapis.com/customsearch/v1?'
     APIKEY = os.environ["APIKEY"]
     CX = "013191322677682374929:qdynn3gz9ku"
-    SEARCHURL = f"{BASEURL}key={APIKEY}&cx={CX}&q={keyword}&searchType=image"
+    SEARCHURL = f"{BASEURL}key={APIKEY}&cx={CX}&q={keyword}&safe={is_nsfw}&searchType=image"
 
     response = requests.get(SEARCHURL).json()
     items = response["items"]
