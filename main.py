@@ -33,6 +33,7 @@ async def clear(ctx, amount=100):
     print("Messages deleted")
 
 
-if os.environ["TOKEN"] == "exit":
+try:
+    client.run(os.environ["TOKEN"])
+except:
     exit(0)
-client.run(os.environ["TOKEN"])
