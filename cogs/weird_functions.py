@@ -64,7 +64,6 @@ class Weird(commands.Cog):
         if num <= 5:
             for i in range(num):
                 await ctx.send(image(keywords[randint(0, len(keywords) - 1)], "active", randint(1, 10)))
-                await ctx.send("test")
         else:
             await ctx.send("Try again with a number less than 5.")
 
