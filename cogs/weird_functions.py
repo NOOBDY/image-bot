@@ -3,9 +3,7 @@ import discord
 from discord.ext import commands
 import sys
 from random import randint
-from APIs.image import image
-from APIs.pornhub import pornhub
-from APIs.rule34 import rule34
+from APIs import (image, pornhub, rule34)
 import traceback
 
 
