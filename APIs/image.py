@@ -12,7 +12,11 @@ def image(keywords, is_nsfw, index):
     SEARCHURL = f"{BASEURL}key={APIKEY}&cx={CX}&q={keyword}&safe={is_nsfw}&searchType=image"
 
     response = requests.get(SEARCHURL).json()
-    items = response["items"]
+    items = []
+
+    for item in response["items"]:
+        if ".gif" not in item["link"]:
+            items.append(item)
 
     if len(items) == 0:
         return None
