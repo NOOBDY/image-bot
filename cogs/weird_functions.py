@@ -54,6 +54,15 @@ class Weird(commands.Cog):
         else:
             ctx.send("No image found or some error occured. Please try again.")
 
+    @commands.command(aliases=["wash"])
+    async def eyebleach(self, ctx, num=3):
+        num = int(num)
+        if num <= 5:
+            for i in range(num):
+                await ctx.send(image(["eyebleach"], "active", i))
+        else:
+            await ctx.send("Try again with a number less than 5.")
+
     @commands.command(pass_context=True)
     @commands.is_nsfw()
     async def porn(self, ctx, *args):
