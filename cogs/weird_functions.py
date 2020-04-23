@@ -1,9 +1,11 @@
-import os
 import discord
 from discord.ext import commands
-import sys
+
 from random import randint
 from APIs import (image, pornhub, rule34)
+
+import os
+import sys
 import traceback
 
 
@@ -59,11 +61,10 @@ class Weird(commands.Cog):
                     "cute animals", "cute pets"]
         keywords = [i.split(" ") for i in keywords]
 
-        if num <= 5:
-            for i in range(num):
-                await ctx.send(image(keywords[randint(0, len(keywords) - 1)], "active", randint(1, 10)))
-        else:
-            await ctx.send("Try again with a number less than 5.")
+        num = num if num <= 5 else 5
+
+        for i in range(num):
+            await ctx.send(image(keywords[randint(0, len(keywords) - 1)], "active", randint(1, 10)))
 
     @commands.command(pass_context=True)
     @commands.is_nsfw()
