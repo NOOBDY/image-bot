@@ -38,21 +38,26 @@ class Weird(commands.Cog):
 
     @commands.command(aliases=["img"])
     async def image(self, ctx, *args):
-        if ctx.channel.is_nsfw():
-            url = image(args, "off", randint(1, 10))
-        else:
-            url = image(args, "active", randint(1, 10))
+        for i in range(10):
+            url = image(
+                args,
+                "off" if ctx.channel.is_nsfw() else "active",
+                i
+            )
 
-        if url is not None:
-            keyword = " ".join(args)
-            embed = discord.Embed(
-                title=f"Search results for: {keyword}",
-                description=url,
-                color=0x00ffae)
-            embed.set_image(url=url)
-            await ctx.send(embed=embed)
-        else:
-            ctx.send("No image found or some error occured. Please try again.")
+            if url is not None:
+                keyword = " ".join(args)
+                embed = discord.Embed(
+                    title=f"Search results for: {keyword}",
+                    description=url,
+                    color=0x00ffae)
+                embed.set_image(url=url)
+                await ctx.send(embed=embed)
+            else:
+                embed = discord.Embed(
+                    title="No image found or some error occured. Please try again."
+                )
+                ctx.send(embed=embed)
 
     @commands.command(pass_context=True)
     @commands.is_nsfw()
