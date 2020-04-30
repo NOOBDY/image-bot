@@ -3,9 +3,7 @@ import discord
 from discord.ext import commands
 import sys
 from random import randint
-from APIs.image import image
-from APIs.pornhub import pornhub
-from APIs.rule34 import rule34
+from APIs import (image, pornhub, rule34)
 import traceback
 
 
@@ -58,6 +56,19 @@ class Weird(commands.Cog):
                     title="No image found or some error occured. Please try again."
                 )
                 ctx.send(embed=embed)
+
+    @commands.command(aliases=["wash"])
+    async def eyebleach(self, ctx, num=3):
+        num = int(num)
+        keywords = ["dogs", "puppy", "kitty",
+                    "cute animals", "cute pets"]
+        keywords = [i.split(" ") for i in keywords]
+
+        if num <= 5:
+            for i in range(num):
+                await ctx.send(image(keywords[randint(0, len(keywords) - 1)], "active", randint(1, 10)))
+        else:
+            await ctx.send("Try again with a number less than 5.")
 
     @commands.command(pass_context=True)
     @commands.is_nsfw()
