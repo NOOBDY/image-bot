@@ -36,6 +36,7 @@ class Weird(commands.Cog):
 
     @commands.command(aliases=["img"])
     async def image(self, ctx, *args):
+        i = randint(1,10)
         url = image(
             args,
             "off" if ctx.channel.is_nsfw() else "active",
