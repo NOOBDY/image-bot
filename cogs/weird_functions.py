@@ -38,10 +38,12 @@ class Weird(commands.Cog):
 
     @commands.command(aliases=["img"])
     async def image(self, ctx, *args):
-        if ctx.channel.is_nsfw():
-            url = image(args, "off", randint(1, 10))
-        else:
-            url = image(args, "active", randint(1, 10))
+        i = randint(1,10)
+        url = image(
+            args,
+            "off" if ctx.channel.is_nsfw() else "active",
+            i
+        )
 
         if url is not None:
             keyword = " ".join(args)
@@ -52,7 +54,10 @@ class Weird(commands.Cog):
             embed.set_image(url=url)
             await ctx.send(embed=embed)
         else:
-            ctx.send("No image found or some error occured. Please try again.")
+            embed = discord.Embed(
+                title="No image found or some error occured. Please try again."
+            )
+            ctx.send(embed=embed)
 
     @commands.command(aliases=["wash"])
     async def eyebleach(self, ctx, num=3):
