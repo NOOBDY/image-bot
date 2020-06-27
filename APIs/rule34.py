@@ -3,9 +3,9 @@ from bs4 import BeautifulSoup
 
 
 def rule34(keywords, index):
-
+    """Search things on https://rule34.xxx"""
     keyword = "_".join(keywords)
-    r_keyword=" ".join(keywords)
+    r_keyword = " ".join(keywords)
 
     BASEURL = "https://rule34.xxx/"
     SEARCHURL = f"{BASEURL}index.php?page=post&s=list&tags={keyword}*"
