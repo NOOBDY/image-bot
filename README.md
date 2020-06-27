@@ -32,13 +32,21 @@ Usage: `.ping`
 
 ## Weird
 
-### image
+### image (aliases: img)
 
 Description: Returns one of the first ten image results on google images
 
 Usage: `.image [keywords can contain more than one word]`
 
 > Note: Will return different results depending on whether the channel is a NSFW channel or not
+
+### eyebleach (aliases: wash)
+
+Description: Returns a given amount(or a default value of 3) of cute animals images if you saw something horrifying and need to wash your eyes
+
+Usage: `.eyebleach [number(optional)]`
+
+> Note: To avoid spamming, the maximum value accepted is set to 5
 
 ### porn
 
@@ -48,7 +56,7 @@ Usage: `.porn [this can also contain multiple keywords]`
 
 > Note: This command can only be used in a NSFW channel
 
-### rule34
+### rule34 (aliases: r34)
 
 Description: Returns one of the first ten image results from <https://rule34.xxx/>
 
@@ -58,7 +66,7 @@ Usage: `.rule34 [still another command that can take multiple keywords]`
 
 ## No Category
 
-### Clear
+### clear
 
 Description: Clears a given amount of messages or 100 by default
 
@@ -68,6 +76,6 @@ Usage: `.clear [amount(optional)]`
 
 ### help
 
-Description: returns the help message, containing all commands
+Description: Returns the help message containing all commands
 
 Usage: `.help`

@@ -1,7 +1,6 @@
-import os
 import discord
 from discord.ext import commands
-import sys
+
 from random import randint
 from APIs import image, pornhub, rule34
 import traceback
@@ -36,26 +35,26 @@ class Weird(commands.Cog):
 
     @commands.command(aliases=["img"])
     async def image(self, ctx, *args):
-        for i in range(10):
-            url = image(
-                args,
-                "off" if ctx.channel.is_nsfw() else "active",
-                i
-            )
+        i = randint(1, 10)
+        url = image(
+            args,
+            "off" if ctx.channel.is_nsfw() else "active",
+            i
+        )
 
-            if url is not None:
-                keyword = " ".join(args)
-                embed = discord.Embed(
-                    title=f"Search results for: {keyword}",
-                    description=url,
-                    color=0x00ffae)
-                embed.set_image(url=url)
-                await ctx.send(embed=embed)
-            else:
-                embed = discord.Embed(
-                    title="No image found or some error occured. Please try again."
-                )
-                ctx.send(embed=embed)
+        if url is not None:
+            keyword = " ".join(args)
+            embed = discord.Embed(
+                title=f"Search results for: {keyword}",
+                description=url,
+                color=0x00ffae)
+            embed.set_image(url=url)
+            await ctx.send(embed=embed)
+        else:
+            embed = discord.Embed(
+                title="No image found or some error occured. Please try again."
+            )
+            ctx.send(embed=embed)
 
     @commands.command(aliases=["wash"])
     async def eyebleach(self, ctx, num=3):
@@ -64,11 +63,10 @@ class Weird(commands.Cog):
                     "cute animals", "cute pets"]
         keywords = [i.split(" ") for i in keywords]
 
-        if num <= 5:
-            for i in range(num):
-                await ctx.send(image(keywords[randint(0, len(keywords) - 1)], "active", randint(1, 10)))
-        else:
-            await ctx.send("Try again with a number less than 5.")
+        num = num if num <= 5 else 5
+
+        for i in range(num):
+            await ctx.send(image(keywords[randint(0, len(keywords) - 1)], "active", randint(1, 10)))
 
     @commands.command(pass_context=True)
     @commands.is_nsfw()
