@@ -2,10 +2,7 @@ import discord
 from discord.ext import commands
 
 from random import randint
-from APIs import (image, pornhub, rule34)
-
-import os
-import sys
+from APIs import image, pornhub, rule34
 import traceback
 
 
