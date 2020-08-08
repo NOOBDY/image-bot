@@ -23,7 +23,7 @@ class Weird(commands.Cog):
             return
 
         elif isinstance(error, commands.NSFWChannelRequired):
-            # NFSW channel error
+            # NSFW channel error
 
             embed = discord.Embed(
                 title="Dis ain't no NSFW channel, dumbass.",
@@ -38,7 +38,7 @@ class Weird(commands.Cog):
 
     @commands.command(aliases=["img"])
     async def image(self, ctx, *args):
-        i = randint(1,10)
+        i = randint(1, 10)
         url = image(
             args,
             "off" if ctx.channel.is_nsfw() else "active",
