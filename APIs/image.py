@@ -1,7 +1,6 @@
-import os
-
 import requests
 from bs4 import BeautifulSoup
+import os
 
 
 def image(keywords, is_nsfw, index):
