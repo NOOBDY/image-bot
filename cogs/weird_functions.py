@@ -1,9 +1,11 @@
+import sys
+import traceback
+from random import randint
+
 import discord
 from discord.ext import commands
 
-from random import randint
 from APIs import image, pornhub, rule34
-import traceback
 
 
 class Weird(commands.Cog):
