@@ -35,5 +35,6 @@ async def clear(ctx, amount=100):
 
 try:
     client.run(os.environ["TOKEN"])
-except:
+except Exception as e:
+    print(e)
     exit(0)
