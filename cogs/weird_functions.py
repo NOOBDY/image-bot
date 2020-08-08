@@ -1,9 +1,11 @@
+import sys
+import traceback
+from random import randint
+
 import discord
 from discord.ext import commands
 
-from random import randint
 from APIs import image, pornhub, rule34
-import traceback
 
 
 class Weird(commands.Cog):
@@ -52,7 +54,7 @@ class Weird(commands.Cog):
             await ctx.send(embed=embed)
         else:
             embed = discord.Embed(
-                title="No image found or some error occured. Please try again."
+                title="No image found or some error occurred. Please try again."
             )
             ctx.send(embed=embed)
 
