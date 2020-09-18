@@ -48,22 +48,6 @@ Usage: `.eyebleach [number(optional)]`
 
 > Note: To avoid spamming, the maximum value accepted is set to 5
 
-### porn
-
-Description: Returns one of the first ten video results from Canada's largest website
-
-Usage: `.porn [this can also contain multiple keywords]`
-
-> Note: This command can only be used in a NSFW channel
-
-### rule34 (aliases: r34)
-
-Description: Returns one of the first ten image results from <https://rule34.xxx/>
-
-Usage: `.rule34 [still another command that can take multiple keywords]`
-
-> Note: This command can only be used in a NSFW channel
-
 ## No Category
 
 ### clear
