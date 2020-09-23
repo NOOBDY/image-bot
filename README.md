@@ -63,3 +63,9 @@ Usage: `.clear [amount(optional)]`
 Description: Returns the help message containing all commands
 
 Usage: `.help`
+
+## Inviting
+
+Invite this bot to your server using this [link](https://discord.com/api/oauth2/authorize?client_id=623521834712825866&permissions=124928&scope=bot)
+
+> Note: You need to have the "Manage Server" permission to add this bot
