@@ -4,3 +4,4 @@ services:
         build: .
         volumes: 
             - .:/discord-bot
+        container_name: discord-bot
