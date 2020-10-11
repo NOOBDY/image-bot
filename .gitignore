@@ -114,3 +114,4 @@ venv.bak/
 *.png
 
 config.json
+secrets.json

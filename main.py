@@ -1,3 +1,4 @@
+import json
 import os
 
 import discord
@@ -32,9 +33,10 @@ async def clear(ctx, amount=100):
     await channel.delete_messages(messages)
     print("Messages deleted")
 
+if __name__ == "__main__":
 
-try:
-    client.run(os.environ["TOKEN"])
-except Exception as e:
-    print(e)
-    exit(0)
+    with open("secrets.json") as secrets:
+        data = json.load(secrets)
+        TOKEN = data["TOKEN"]
+
+    client.run(TOKEN)
