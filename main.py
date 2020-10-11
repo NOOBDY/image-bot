@@ -11,13 +11,6 @@ async def on_ready():
     print("Bot is ready")
 
 
-@client.event
-async def on_message(message):
-    author = message.author
-    print("User [{}] has sent a message".format(author))
-    await client.process_commands(message)
-
-
 for filename in os.listdir("./cogs"):
     if filename.endswith(".py"):
         client.load_extension(f"cogs.{filename[:-3]}")
