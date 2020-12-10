@@ -1,7 +1,6 @@
 import json
 
 import requests
-from bs4 import BeautifulSoup
 
 
 def image(keywords, is_nsfw, index):
