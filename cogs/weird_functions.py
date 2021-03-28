@@ -4,6 +4,8 @@ from random import randint
 
 import discord
 from discord.ext import commands
+from discord.ext.commands import Context
+from discord.channel import TextChannel
 
 from APIs import image
 
@@ -14,7 +16,7 @@ class Weird(commands.Cog):
 
     # Exception handling
     @commands.Cog.listener()
-    async def on_command_error(self, ctx, error):
+    async def on_command_error(self, ctx: Context, error):
         ignored = (commands.CommandNotFound, commands.UserInputError)
         error = getattr(error, "original", error)
 
@@ -35,8 +37,17 @@ class Weird(commands.Cog):
         traceback.print_exception(
             type(error), error, error.__traceback__, file=sys.stderr)
 
+    @commands.command(pass_context=True)
+    async def clear(self, ctx: Context, amount=5):
+        channel: TextChannel = ctx.message.channel
+        messages = []
+        async for message in channel.history(limit=amount+1):
+            messages.append(message)
+        await channel.delete_messages(messages)
+        print("Messages deleted")
+
     @commands.command(aliases=["img"])
-    async def image(self, ctx, *args):
+    async def image(self, ctx: Context, *args):
         i = randint(1, 10)
         url = image(
             args,
@@ -59,7 +70,7 @@ class Weird(commands.Cog):
             ctx.send(embed=embed)
 
     @commands.command(aliases=["wash"])
-    async def eyebleach(self, ctx, num=3):
+    async def eyebleach(self, ctx: Context, num=3):
         num = int(num)
         keywords = ["dogs", "puppy", "kitty",
                     "cute animals", "cute pets"]
@@ -71,5 +82,5 @@ class Weird(commands.Cog):
             await ctx.send(image(keywords[randint(0, len(keywords) - 1)], "active", randint(1, 10)))
 
 
-def setup(client):
+def setup(client: commands.Bot):
     client.add_cog(Weird(client))
