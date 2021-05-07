@@ -85,15 +85,18 @@ class Weird(commands.Cog):
     @commands.command(pass_context=True)
     @commands.is_nsfw()
     async def porn(self, ctx: Context, *args):
-        keyword, title, url, thumb = pornhub(args, randint(0, 9))
-        if url is not None:
+        keyword = " ".join(args)
+        result = pornhub(args, randint(0, 9))
+        if result is not None:
             # formatting and sending embed
             embed = discord.Embed(
-                title=title,
-                description=url,
-                color=0xff8000)
+                title=result["title"],
+                description=result["url"],
+                color=0xff8000
+            )
             embed.set_author(name=f"Search results for: {keyword}")
-            embed.set_image(url=thumb)
+            embed.set_image(url=result["thumbnail"])
+
             await ctx.send(embed=embed)
         else:
             # returns no results message if not relevant results are found
@@ -106,13 +109,15 @@ class Weird(commands.Cog):
     @commands.command(pass_context=True, aliases=["r34"])
     @commands.is_nsfw()
     async def rule34(self, ctx, *args):
-        keyword, url, img = rule34(args, randint(0, 9))
-        if url is not None:
+        keyword = " ".join(args)
+        result = rule34(args, randint(0, 9))
+
+        if result["url"] is not None:
             embed = discord.Embed(
                 title=f"Search results for: {keyword}",
-                description=url
+                description=result["url"]
             )
-            embed.set_image(url=img)
+            embed.set_image(url=result["img"])
             await ctx.send(embed=embed)
         else:
             embed = discord.Embed(
